@@ -61,6 +61,7 @@ flutter:
   assets:
     - assets/it_words_basic.json
     - assets/it_words_advanced.json
+    - assets/imgs/launcher_screen.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

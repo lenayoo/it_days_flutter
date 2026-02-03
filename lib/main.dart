@@ -15,7 +15,32 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: SplashScreen(),
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (_) => const HomeScreen()),
+          );
+        },
+        child: Center(
+          child: Image.asset(
+            'assets/imgs/launcher_screen.png',
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -119,12 +144,21 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return Scaffold(
+      backgroundColor:
+          _currentCategory == WordCategory.basic
+              ? const Color(0xFFBFD7EA)
+              : const Color(0xFFFDE2EB),
       appBar: AppBar(
         title: Text(
           _currentCategory == WordCategory.basic
-              ? '基本情報技術者 - 基本'
-              : '基本情報技術者 - 高級',
+              ? '基本情報技術者👨‍💻 - 基本'
+              : '基本情報技術者👩‍💻 - 高級',
         ),
+        backgroundColor:
+            _currentCategory == WordCategory.basic
+                ? const Color(0xFFBFD7EA)
+                : const Color(0xFFFDE2EB),
+        foregroundColor: Colors.black87,
       ),
 
       bottomNavigationBar: SafeArea(
